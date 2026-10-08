@@ -454,6 +454,142 @@
             opacity: 1;
         }
 
+        /* Moments: three slideshows */
+        .moments {
+            background: var(--light-bg);
+        }
+
+        .moments-grid {
+            display: grid;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .show-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .show-number {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+        }
+
+        .show-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.9rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .show-frame {
+            position: relative;
+            display: grid;
+            place-items: center;
+            aspect-ratio: 16 / 9;
+            min-height: 240px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: var(--dark-bg);
+            box-shadow: 0 18px 50px rgba(10, 24, 40, 0.2);
+            touch-action: pan-y;
+        }
+
+        .show-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.35s ease;
+        }
+
+        .show-frame img.is-loading {
+            opacity: 0;
+        }
+
+        .show-caption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 2.5rem 1.5rem 1rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .show-btn {
+            border: 0;
+            border-radius: 999px;
+            cursor: pointer;
+            font: inherit;
+            display: inline-grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(10, 24, 40, 0.82);
+            color: white;
+            transition: background 0.2s ease;
+        }
+
+        .show-btn:hover {
+            background: var(--primary-blue);
+        }
+
+        .show-prev,
+        .show-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .show-prev { left: 1rem; }
+        .show-next { right: 1rem; }
+
+        .show-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .show-play {
+            width: auto;
+            padding: 0 1.25rem;
+            gap: 0.6rem;
+            background: var(--dark-bg);
+        }
+
+        .show-empty {
+            position: absolute;
+            inset: 0;
+            display: none;
+            place-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .show button:focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 600px) {
+            .moments-grid { gap: 3rem; }
+            .show-frame { aspect-ratio: 4 / 3; min-height: 200px; border-radius: 12px; }
+            .show-btn { width: 42px; height: 42px; }
+            .show-prev { left: 0.5rem; }
+            .show-next { right: 0.5rem; }
+            .show-caption { padding: 2rem 1rem 0.8rem; font-size: 0.9rem; }
+        }
+
         /* Partners Section */
         .partners {
             background: var(--light-bg);
@@ -660,6 +796,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#moments">Moments</a></li>
             <li><a href="#partners">Partners</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -758,15 +895,15 @@
     <section class="stats">
         <div class="stats-grid">
             <div class="stat-item">
-                <h2>207+</h2>
+                <h2>765+</h2>
                 <p>Cyber Security Graduates</p>
             </div>
             <div class="stat-item">
-                <h2>149+</h2>
+                <h2>675+</h2>
                 <p>Digital Entrepreneurship Graduates</p>
             </div>
             <div class="stat-item">
-                <h2>69+</h2>
+                <h2>983+</h2>
                 <p>Digital Literacy Graduates</p>
             </div>
         </div>
@@ -780,21 +917,21 @@
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-number">207</div>
+                <div class="project-number">765</div>
                 <div class="project-info">
                     <h3>Cyber Security</h3>
                     <p>Proudly produced graduates ready for the digital age</p>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-number">149</div>
+                <div class="project-number">675</div>
                 <div class="project-info">
                     <h3>Digital Entrepreneurship</h3>
                     <p>Empowering the next generation of business leaders</p>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-number">69</div>
+                <div class="project-number">983</div>
                 <div class="project-info">
                     <h3>Digital Literacy</h3>
                     <p>Bridging the digital divide in communities</p>
@@ -867,6 +1004,64 @@
         </div>
     </section>
 
+    <!-- Moments: three slideshows -->
+    <section class="moments" id="moments">
+        <div class="section-header">
+            <h2 class="section-title">Moments</h2>
+            <p class="section-subtitle">Celebrating our graduates, our institute and our award winners</p>
+        </div>
+        <div class="moments-grid">
+            <article class="show" data-show="graduation" aria-label="NKS SOLUTIONS INSTITUTE Spring Graduations Ceremony 2026 slideshow">
+                <div class="show-header">
+                    <span class="show-number">01</span>
+                    <h3 class="show-title">NKS SOLUTIONS INSTITUTE Spring Graduations Ceremony 2026</h3>
+                </div>
+                <div class="show-frame">
+                    <img alt="" decoding="async">
+                    <div class="show-empty">Photos for this slideshow could not be loaded.</div>
+                    <div class="show-caption"><span class="show-label"></span><span class="show-count" aria-live="polite"></span></div>
+                    <button class="show-btn show-prev" type="button" aria-label="Previous photo"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="show-btn show-next" type="button" aria-label="Next photo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+                <div class="show-footer">
+                    <button class="show-btn show-play" type="button" aria-label="Pause slideshow"><i class="fas fa-pause" aria-hidden="true"></i><span>Pause</span></button>
+                </div>
+            </article>
+            <article class="show" data-show="institute" aria-label="NKS SOLUTIONS INSTITUTE slideshow">
+                <div class="show-header">
+                    <span class="show-number">02</span>
+                    <h3 class="show-title">NKS SOLUTIONS INSTITUTE</h3>
+                </div>
+                <div class="show-frame">
+                    <img alt="" decoding="async">
+                    <div class="show-empty">Photos for this slideshow could not be loaded.</div>
+                    <div class="show-caption"><span class="show-label"></span><span class="show-count" aria-live="polite"></span></div>
+                    <button class="show-btn show-prev" type="button" aria-label="Previous photo"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="show-btn show-next" type="button" aria-label="Next photo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+                <div class="show-footer">
+                    <button class="show-btn show-play" type="button" aria-label="Pause slideshow"><i class="fas fa-pause" aria-hidden="true"></i><span>Pause</span></button>
+                </div>
+            </article>
+            <article class="show" data-show="awards" aria-label="NKS SOLUTIONS INSTITUTE 🎓 Special Awards and Recognition slideshow">
+                <div class="show-header">
+                    <span class="show-number">03</span>
+                    <h3 class="show-title">NKS SOLUTIONS INSTITUTE 🎓 Special Awards and Recognition</h3>
+                </div>
+                <div class="show-frame">
+                    <img alt="" decoding="async">
+                    <div class="show-empty">Photos for this slideshow could not be loaded.</div>
+                    <div class="show-caption"><span class="show-label"></span><span class="show-count" aria-live="polite"></span></div>
+                    <button class="show-btn show-prev" type="button" aria-label="Previous photo"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="show-btn show-next" type="button" aria-label="Next photo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+                <div class="show-footer">
+                    <button class="show-btn show-play" type="button" aria-label="Pause slideshow"><i class="fas fa-pause" aria-hidden="true"></i><span>Pause</span></button>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- Partners Section -->
     <section class="partners" id="partners">
         <div class="section-header">
@@ -929,7 +1124,8 @@
      
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script src="slideshows.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -982,9 +1178,141 @@
             observer.observe(el);
         });
 
+        // ===== Moments: three independent slideshows =====
+        // Photo lists come from slideshows.js (made by build-slideshows.bat).
+        // If that file is missing, we try the GitHub repo instead.
+        const BASE_PATH = '';
+        const SLIDE_INTERVAL = 5000;
+        const GITHUB_REPO = 'BlessingMokoena/NKS-Solutions';
+        const GITHUB_BRANCH = 'main';
+        const momentLabels = {
+            graduation: 'Spring Graduations Ceremony 2026',
+            institute: 'NKS Solutions Institute',
+            awards: 'Special Awards and Recognition'
+        };
+        const IMAGE_RE = /\.(jpe?g|png|webp|gif)$/i;
+        const keyForFolder = name => /spring/i.test(name) ? 'graduation' : /award/i.test(name) ? 'awards' : 'institute';
+
+        let githubShowsPromise;
+        const loadGithubShows = () => githubShowsPromise || (githubShowsPromise = (async () => {
+            const api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/';
+            const root = await (await fetch(api + '?ref=' + GITHUB_BRANCH)).json();
+            const out = {};
+            for (const dir of root.filter(i => i.type === 'dir' && /^NKS SOLUTIONS INSTITUTE/i.test(i.name))) {
+                const items = await (await fetch(api + encodeURIComponent(dir.name) + '?ref=' + GITHUB_BRANCH)).json();
+                out[keyForFolder(dir.name)] = {
+                    folder: dir.name,
+                    base: 'https://raw.githubusercontent.com/' + GITHUB_REPO + '/' + GITHUB_BRANCH + '/',
+                    files: items.filter(i => i.type === 'file' && IMAGE_RE.test(i.name)).map(i => i.name).sort()
+                };
+            }
+            return out;
+        })().catch(() => ({})));
+
+        function setupShow(root, data) {
+            const img = root.querySelector('.show-frame img');
+            const label = root.querySelector('.show-label');
+            const count = root.querySelector('.show-count');
+            const empty = root.querySelector('.show-empty');
+            const playBtn = root.querySelector('.show-play');
+            const frame = root.querySelector('.show-frame');
+            const urlFor = i => (data.base || BASE_PATH) + encodeURIComponent(data.folder) + '/' + encodeURIComponent(data.files[i]);
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let index = 0, timer = null, playing = !reduceMotion, visible = false, failures = 0, step = 1;
+
+            const show = i => {
+                index = (i + data.files.length) % data.files.length;
+                img.classList.add('is-loading');
+                img.src = urlFor(index);
+                img.alt = data.label + ' photo ' + (index + 1);
+                label.textContent = data.label;
+                count.textContent = (index + 1) + ' / ' + data.files.length;
+                const next = new Image();           // preload the following photo
+                next.src = urlFor((index + 1) % data.files.length);
+            };
+            img.addEventListener('load', () => {
+                failures = 0;
+                empty.style.display = 'none';
+                img.classList.remove('is-loading');
+            });
+            img.addEventListener('error', () => {   // skip missing files, give up if all fail
+                failures++;
+                if (failures >= data.files.length) {
+                    img.classList.add('is-loading');
+                    empty.style.display = 'grid';
+                    stop();
+                    return;
+                }
+                show(index + step);
+            });
+
+            const stop = () => { clearInterval(timer); timer = null; };
+            const start = () => {
+                stop();
+                if (playing && visible) timer = setInterval(() => { step = 1; show(index + 1); }, SLIDE_INTERVAL);
+            };
+            const setPlayUi = () => {
+                playBtn.querySelector('i').className = playing ? 'fas fa-pause' : 'fas fa-play';
+                playBtn.querySelector('span').textContent = playing ? 'Pause' : 'Play';
+                playBtn.setAttribute('aria-label', (playing ? 'Pause' : 'Play') + ' slideshow');
+            };
+            const go = d => { step = d; show(index + d); start(); };
+
+            root.querySelector('.show-prev').addEventListener('click', () => go(-1));
+            root.querySelector('.show-next').addEventListener('click', () => go(1));
+            playBtn.addEventListener('click', () => { playing = !playing; setPlayUi(); start(); });
+            root.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') go(-1);
+                else if (e.key === 'ArrowRight') go(1);
+            });
+
+            // swipe on touch screens
+            let touchX = null;
+            frame.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+            frame.addEventListener('touchend', e => {
+                if (touchX === null) return;
+                const dx = e.changedTouches[0].clientX - touchX;
+                if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+                touchX = null;
+            });
+
+            // only load and autoplay once the slideshow is near the screen
+            let loaded = false;
+            new IntersectionObserver(entries => {
+                visible = entries[0].isIntersecting;
+                if (visible && !loaded) { loaded = true; show(0); }
+                start();
+            }, { rootMargin: '200px' }).observe(root);
+
+            setPlayUi();
+        }
+
+        document.querySelectorAll('.show').forEach(root => {
+            const key = root.dataset.show;
+            const fromManifest = window.NKS_SLIDESHOWS && window.NKS_SLIDESHOWS[key];
+            const start = d => setupShow(root, { label: momentLabels[key], folder: d.folder, base: d.base, files: d.files });
+            const fail = () => {
+                root.querySelector('.show-empty').style.display = 'grid';
+                root.querySelector('.show-count').textContent = '';
+                console.warn('No photos found for "' + key + '". Run build-slideshows.bat and upload slideshows.js with your folders.');
+            };
+            if (fromManifest && fromManifest.files.length) { start(fromManifest); return; }
+            loadGithubShows().then(all => (all[key] && all[key].files.length) ? start(all[key]) : fail());
+        });
+
         // Add active state to nav links based on scroll position
         window.addEventListener('scroll', () => {
             let current = '';
             document.querySelectorAll('section').forEach(section => {
                 const sectionTop = section.offsetTop;
-  
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+        });
+    </script>
+</body>
+</html>
